@@ -44,8 +44,8 @@ RUN apt install --yes curl libcurl3-dev \
     libc-client-dev libkrb5-dev openssl \
     libxml2-dev libldb-dev libfreetype6-dev \
     libldap2-dev libsnmp-dev expat \
-    libsqlite3-dev libpng-dev \
-    libonig-dev libjpeg-dev \
+    libsqlite3-dev libpng-dev libonig-dev  \
+    libzip-dev libbz2-dev libjpeg-dev \
     && rm -rf /var/lib/apt/lists/*
 
 #Instalacao e ativacao das extencoes
@@ -53,8 +53,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 	&& docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
 	&& docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
 	&& docker-php-ext-configure opcache \
-	&& docker-php-ext-configure xmlrpc \
-	&& docker-php-ext-install gd ldap mysqli imap opcache xmlrpc
+	&& docker-php-ext-configure xmlrpc 
+
+RUN docker-php-ext-install gd ldap mysqli imap \
+    opcache xmlrpc intl exif zip bz2
 
 COPY ./cas.tgz /var/www/html/
 RUN pear install cas.tgz

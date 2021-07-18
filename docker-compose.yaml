@@ -2,15 +2,16 @@ version: "3.8"
 
 services: 
   php: 
-    image: kllmkll/php-ext:glpi-9.5.5
+    image: kllmkll/glpi:9.5.5
     ports: 
       - "80:80"
+      - "443:443"
     networks: 
       - glpi
     depends_on:
       - db
-    volumes: 
-      - ./glpi:/var/www/html
+#    volumes: 
+#      - ./glpi:/var/www/html
   db:
     image: mariadb
     environment: 
@@ -19,7 +20,7 @@ services:
       MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: glpi
     ports: 
-      - "3306:3306"
+      - "3306"
     networks: 
       - glpi
 
