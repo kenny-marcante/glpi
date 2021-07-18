@@ -2,17 +2,15 @@ version: "3.8"
 
 services: 
   php: 
-    image: kllmkll/php-ext:glpi-9.3.3
+    image: kllmkll/php-ext:glpi-9.5.5
     ports: 
       - "80:80"
     networks: 
       - glpi
     depends_on:
       - db
-#    volumes: 
-#      - type: bind
-#        source: ./src
-#        target: /var/www/html
+    volumes: 
+      - ./glpi:/var/www/html
   db:
     image: mariadb
     environment: 
