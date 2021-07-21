@@ -15,12 +15,12 @@ services:
   db:
     image: mariadb
     environment: 
-      MYSQL_ROOT_PASSWORD: N6caAUxKCHa3EMXQ
+      MYSQL_ROOT_PASSWORD: change
       MYSQL_USER: glpi
       MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: glpi
     ports: 
-      - "3306"
+      - "3306:3306"
     networks: 
       - glpi
 
