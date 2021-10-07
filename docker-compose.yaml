@@ -10,8 +10,8 @@ services:
       - glpi
     depends_on:
       - db
-#    volumes: 
-#      - ./glpi:/var/www/html
+    volumes: 
+      - ./src:/var/www/html
   db:
     image: mariadb
     environment: 
